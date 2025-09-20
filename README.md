@@ -51,24 +51,54 @@
 
     <script>
         const pasos = [
-            {tipo:"intro", texto:"1) Partimos de la ecuación de Bernoulli entre A y F:"},
+            // --- PARTE 1: Cálculo de Q ---
+            {tipo:"intro", texto:"1) Ecuación de Bernoulli entre A y F:"},
             {tipo:"eq", linea:0, partes:["\\frac{p_A}{\\gamma} + z_A + \\frac{v_A^2}{2g} = \\frac{p_F}{\\gamma} + z_F + \\frac{v_F^2}{2g}"]},
 
-            {tipo:"intro", texto:"2) Como p_A = 0 Pa, p_F = 0 Pa y v_A ≈ 0, se cancelan términos:"},
+            {tipo:"intro", texto:"2) Como p_A = 0 Pa, p_F = 0 Pa y v_A ≈ 0:"},
             {tipo:"eq", linea:1, partes:["z_A = z_F + \\frac{v_F^2}{2g}"]},
 
             {tipo:"intro", texto:"3) Despejamos la velocidad en F:"},
             {tipo:"eq", linea:2, partes:["v_F = \\sqrt{2g(z_A - z_F)}"]},
             {tipo:"add", linea:2, texto:"= \\sqrt{(2)(9.81)(3.0)} = 7.67 \\, m/s"},
 
-            {tipo:"intro", texto:"4) Área de la boquilla de diámetro 25 mm:"},
-            {tipo:"eq", linea:3, partes:["A_F = \\frac{\\pi (25 \\, mm)^2}{4} = 491 \\, mm^2"]},
+            {tipo:"intro", texto:"4) Área de la boquilla (25 mm):"},
+            {tipo:"eq", linea:3, partes:["A_F = \\frac{\\pi (0.025)^2}{4} = 4.91 \\times 10^{-4} \\, m^2"]},
 
             {tipo:"intro", texto:"5) Caudal volumétrico:"},
             {tipo:"eq", linea:4, partes:["Q = A_F v_F"]},
-            {tipo:"add", linea:4, texto:"= (491 \\, mm^2)(7.67 \\, m/s) \\left(\\frac{1 \\, m^2}{10^6 \\, mm^2}\\right) = 3.77 \\times 10^{-3} \\, m^3/s"},
+            {tipo:"add", linea:4, texto:"= (4.91 \\times 10^{-4})(7.67) = 3.77 \\times 10^{-3} \\, m^3/s"},
 
-            {tipo:"final", texto:"Resultado final: <br><strong>Q = 3.77 × 10⁻³ m³/s</strong>"}
+            {tipo:"final", texto:"Resultado: <br><strong>Q = 3.77 × 10⁻³ m³/s</strong>"},
+
+            // --- PARTE 2: Presión en B ---
+            {tipo:"intro", texto:"6) Aplicamos Bernoulli entre A y B:"},
+            {tipo:"eq", linea:5, partes:["\\frac{p_A}{\\gamma} + z_A + \\frac{v_A^2}{2g} = \\frac{p_B}{\\gamma} + z_B + \\frac{v_B^2}{2g}"]},
+
+            {tipo:"intro", texto:"7) Como p_A=0 y v_A=0:"},
+            {tipo:"eq", linea:6, partes:["p_B = \\gamma[(z_A - z_B) - \\tfrac{v_B^2}{2g}]"]},
+
+            {tipo:"intro", texto:"8) Velocidad en B usando continuidad:"},
+            {tipo:"eq", linea:7, partes:["v_B = \\tfrac{Q}{A_B} = \\tfrac{3.77 \\times 10^{-3}}{1.257 \\times 10^{-3}} = 3.0 \\, m/s"]},
+
+            {tipo:"intro", texto:"9) Sustituyendo valores:"},
+            {tipo:"eq", linea:8, partes:["p_B = (9.81)(3.0 - 1.5 - 3.0^2/(2(9.81))) = -4.50 \\, kPa"]},
+
+            {tipo:"final", texto:"Resultado: <br><strong>p_B = -4.50 kPa</strong>"},
+
+            // --- PARTE 3: Presión en C ---
+            {tipo:"intro", texto:"10) Presión en C, aplicando Bernoulli entre A y C:"},
+            {tipo:"eq", linea:9, partes:["p_C = \\gamma[(z_A - z_C) - v_C^2/(2g)]"]},
+            {tipo:"add", linea:9, texto:"= (9.81)(-1.2 - 0.459) = -16.27 \\, kPa"},
+
+            {tipo:"final", texto:"Resultado: <br><strong>p_C = -16.27 kPa</strong>"},
+
+            // --- PARTE 4: Presión en E ---
+            {tipo:"intro", texto:"11) Presión en E, aplicando Bernoulli entre A y E:"},
+            {tipo:"eq", linea:10, partes:["p_E = \\gamma[(z_A - z_E) - v_E^2/(2g)]"]},
+            {tipo:"add", linea:10, texto:"= (9.81)(3.0 - 0.459) = 24.93 \\, kPa"},
+
+            {tipo:"final", texto:"Resultado: <br><strong>p_E = 24.93 kPa</strong>"}
         ];
 
         const contenedor = document.getElementById('solution');
